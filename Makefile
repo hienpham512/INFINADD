@@ -1,44 +1,39 @@
 ##
 ## EPITECH PROJECT, 2020
-## makefile
+## Makefile
 ## File description:
-## makefile
+## Makefile
 ##
 
-NAME	=	my_ls
+SRC		=	lib/my/my_putchar.c		\
+			lib/my/my_putstr.c		\
+			lib/my/my_revstr.c		\
+			lib/my/my_strlen.c		\
+			lib/my/my_strcat.c		\
+			lib/my/my_strdup.c		\
+			lib/my/my_str_isnum.c		\
+			get_str_nbr_case1.c		\
+			get_str_nbr_case2.c		\
+			get_str_nbr_case3.c		\
+			get_str_nbr_case4.c		\
+			check_zero.c		\
+			chose_case.c		\
+			main.c
 
-SRC	=	main.c	\
-		helper.c	\
-		check_l_r_t.c	\
-		sort_argv.c 	\
-		print_dir.c 	\
-		print_file.c 	\
-		error_gestion.c 	\
-		case_l_with_r.c 	\
-		case_r.c 	\
-		case_special.c 	\
-		cmp_file_dir_name_on_param.c	\
-		take_list_file_in_dir.c 	\
-		lib/my/my_putchar.c		\
-		lib/my/my_arraylen.c		\
-		lib/my/my_strdup.c		\
-		lib/my/my_strlen.c		\
-		lib/my/my_putstr.c		\
-		lib/my/my_put_nbr.c
+OBJ		=	$(SRC:.c=.o)
 
-OBJ 	=	$(SRC:.c=.o)
+NAME	=	infin_add
+
+all:	$(NAME)
 
 $(NAME):	$(OBJ)
-	gcc -o $(NAME) $(OBJ)
-	rm *.o
-	rm lib/my/*.o
-
-all: $(NAME)
+		ar rc $(NAME) $(OBJ)
+		gcc -o$(NAME) $(OBJ)
 
 clean:
 		rm -f $(OBJ)
 
-fclean:	clean
+fclean:
 		rm -f $(NAME)
 
-re: fclean all
+re: clean fclean all

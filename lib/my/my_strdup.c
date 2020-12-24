@@ -1,21 +1,25 @@
 /*
-** EPITECH PROJECT, 2020
-** B-PSU-300-PAR-3-1-myls-thi-hien.pham
+** EPITECH PROJECT, 2018
+** mystrdup
 ** File description:
-** my_strdup
+** duplicate string
 */
 
-#include "../../include/my.h"
+#include "my.h"
+#include <stdlib.h>
 
-char *my_strdup(char *s1, char *s2)
+char *my_strdup(char const *src)
 {
-    char *result = malloc(sizeof(char)
-    * (my_strlen(s1) + my_strlen(s2)) + 1);
+    char *dup;
+    char *dest = malloc(sizeof(char) * (my_strlen(src) + 1));
+    int i = 0;
 
-    for (int i = 0; i < my_strlen(s1); i++)
-        result[i] = s1[i];
-    for (int i = 0; i < my_strlen(s2); i++)
-        result[i + my_strlen(s1)] = s2[i];
-    result[my_strlen(s1) + my_strlen(s2)] = '\0';
-    return result;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i += 1;
+    }
+    dest[i] = '\0';
+    dup = dest;
+    free(dest);
+    return (dup);
 }

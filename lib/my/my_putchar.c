@@ -1,13 +1,14 @@
 /*
-** EPITECH PROJECT, 2020
-** my_putchar
+** EPITECH PROJECT, 2018
+** my putchar .c
 ** File description:
-** putchar
+** my putchar
 */
 
-#include "../../include/my.h"
+#include <unistd.h>
+#include "my.h"
 
 void my_putchar(char c)
 {
-    write (1, &c, 1);
+    write(1, &c, 1);
 }

@@ -1,32 +1,57 @@
 /*
 ** EPITECH PROJECT, 2020
-** B-PSU-300-PAR-3-1-myls-thi-hien->pham
+** main.c
 ** File description:
-** main
+** main.c
 */
 
-#include "include/my.h"
+#include "lib/my/my.h"
+#include <stdlib.h>
+
+int cmp_two_str(char const *s1, char const *s2);
+
+void chose_case_1_2(char const *s1, char const *s2, int c1, int c2);
+
+void chose_case_3_4(char const *s1, char const *s2);
+
+char *create_new_str(char *str);
+
+int my_str_isnum_infin(char const *str)
+{
+    int i = 0;
+
+    if (str[0] == '-')
+        i = 1;
+
+    while (str[i] != '\0') {
+        if (str[i] >= '0' && str[i] <= '9')
+            i += 1;
+        else
+            return (0);
+    }
+    return (1);
+}
 
 int main(int ac, char **av)
 {
-    DIR *rep;
-    struct stat fileStat;
-    struct dirent *dir;
-    char **array = sort_argv(ac, av);
-    if (error_gestion(array) != 0)
-        return ERROR_SYNTAX;
-    if (check_d(ac, av) == 1) {
-        case_d(ac, av, array);
+    int c1;
+    int c2;
+
+    if (ac != 3 || my_str_isnum_infin(av[1]) == 0
+    || my_str_isnum_infin(av[2]) == 0)
         return (0);
-    }
-    case_special(ac, av, array);
-    if (check_l(ac, av) == 1 && check_R(ac, av) == 0
-    && check_case_l_R_empty_param(ac, av) != 0)
-        print_info_file(fileStat, array, ac, av);
-    else if (check_l(ac, av) == 0 && check_R(ac, av) == 1)
-        case_R_wthout_l(ac, av, array);
-    else if (check_l(ac, av) == 1 && check_R(ac, av) == 1
-    && check_case_l_R_empty_param(ac, av) != 0)
-        case_l_with_R(ac, av, array, rep);
-    return 0;
+
+    av[1] = create_new_str(av[1]);
+    av[2] = create_new_str(av[2]);
+
+    c1 = my_strlen(av[1]);
+    c2 = my_strlen(av[2]);
+
+    if (cmp_two_str(av[1], av[2]) == 1 || cmp_two_str(av[1], av[2]) == 2)
+        chose_case_1_2(av[1], av[2], c1, c2);
+    else if (cmp_two_str(av[1], av[2]) == 31 || cmp_two_str(av[1], av[2]) == 32)
+        chose_case_3_4(av[1], av[2]);
+
+    my_putstr("\n");
+    return (0);
 }

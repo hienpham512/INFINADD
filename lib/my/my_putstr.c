@@ -1,18 +1,19 @@
 /*
-** EPITECH PROJECT, 2020
+** EPITECH PROJECT, 2018
 ** my_putstr
 ** File description:
-** my_putstr
+** put a string in the standard output
 */
 
-#include "../../include/my.h"
-
-void my_putchar(char c);
+#include "my.h"
 
 int my_putstr(char const *str)
 {
-    for (int c = 0; str[c] != '\0'; c++) {
-        my_putchar(str[c]);
+    int i = 0;
+
+    while (str[i] != '\0') {
+        my_putchar(str[i]);
+        i += 1;
     }
     return (0);
 }

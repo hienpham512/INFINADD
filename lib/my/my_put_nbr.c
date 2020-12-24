@@ -1,28 +1,34 @@
 /*
-** EPITECH PROJECT, 2020
-** my_put_nbr
+** EPITECH PROJECT, 2018
+** my put nbr
 ** File description:
-** my_put_nbr
+** print any number
 */
 
-#include "../../include/my.h"
+#include "my.h"
+
+static int display_nbr(int nb, char n)
+{
+    if (nb < 0) {
+        my_putchar('-');
+        n = nb % 10 * -1 + '0';
+        display_nbr(nb / -10, n);
+        my_putchar(n);
+    }
+    if (nb > 0) {
+        n = nb % 10 + '0';
+        display_nbr(nb / 10, n);
+        my_putchar(n);
+    }
+}
 
 int my_put_nbr(int nb)
 {
-    int return_value;
-    long int nbr = nb;
+    char n;
 
-    if (nbr > 2147483647 || nbr < -2147483648)
-        return 0;
-    if (nb < 0)
-    {
-        my_putchar('-');
-        nb = nb * (-1);
+    if (nb == 0) {
+        my_putchar('0');
+        return (0);
     }
-
-    if (nb >= 10){
-        my_put_nbr(nb / 10);
-    }
-    return_value = nb % 10 + 48;
-    my_putchar(return_value);
+    display_nbr(nb, n);
 }
